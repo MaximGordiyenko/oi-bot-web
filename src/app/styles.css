@@ -1,95 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+  
+  .hover\:animate-paused:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px;              /* for vertical scrollbar */
+  height: 8px;              /* for horizontal scrollbar */
+}
+
+/* The track (background) */
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+/* The draggable handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* When hovering over the handle */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .landing-page {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #333;
   font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+  
+  .particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2;
+    
+    .ant-select {
+      .ant-select-selector {
+        border-color: #47756a;
+        background: color(srgb 0.1371 0.1294 0.1294);
+        
+        .ant-select-selection-wrap {
+          .ant-select-selection-item {
+            color: white;
+          }
+        }
+      }
+      
+      .ant-select-arrow {
+        color: #47756a;
+      }
+    }
+  }
 }
 
-.particles-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+.ant-select-dropdown {
+  background-color: #232121;
+  
+  .ant-select-item {
+    color: rgba(231, 210, 210, 0.88);
+    background-color: #232121!important;
+    
+    &:hover {
+      color: #47756a;
+    }
+  }
+  
+  .ant-select-item-option-selected {
+    background-color: rgba(96, 120, 115, 0.73);
+    
+    .ant-select-item-option-content {
+      color: white;
+    }
+  }
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(27, 22, 25, 0.36);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
+.recharts-responsive-container {
+  .recharts-wrapper {
+    .recharts-tooltip-wrapper {
+      .recharts-default-tooltip {
+        background: none !important;
+        border: none !important;
+        
+        .recharts-tooltip-item-list {
+          .recharts-tooltip-item {
+            color: rgb(210, 216, 215) !important;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }
 
-h1 {
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  color: #F04086;
-}
-
-p {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  color: #9E1F63;
-}
-
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.cta-button {
-  padding: 0.8rem 1.8rem;
-  font-size: 1.1rem;
-  background-color: #607d8b;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #455a64;
-}
-
-.telegram-button {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1.8rem;
-  font-size: 1.1rem;
-  background-color: #9E1F63;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-decoration: none;
-}
-
-.telegram-button:hover {
-  background-color: #F04086;
-}
-
-.telegram-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-
-.telegram-info {
-  margin-top: 0;
-  font-size: 0.9rem;
-  color: #666;
+.ant-typography {
+  color: #49776c;
 }

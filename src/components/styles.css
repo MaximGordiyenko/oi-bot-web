@@ -1,0 +1,28 @@
+.draggable-item {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: move;
+  position: absolute;
+  text-align: center;
+  padding: 0.7rem;
+  background-color: rgba(92, 87, 87, 0.3);
+  box-shadow: 0 4px 6px rgba(115, 194, 175, 0.74);
+  
+  .draggable-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aabebd;
+  }
+}
+
+.draggable-item:hover .draggable-icon {
+  color: #08edc3;
+}
+
+.draggable-item:hover {
+  box-shadow: 0 4px 6px rgba(25, 218, 172, 0.84);
+}

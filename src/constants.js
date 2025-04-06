@@ -1,7 +1,7 @@
 export const particlesConfig = {
   "particles": {
     "number": {
-      "value": 40
+      "value": 20
     },
     "color": {
       "value": "#607d8b"
@@ -35,3 +35,18 @@ export const particlesConfig = {
     }
   }
 };
+
+
+export const botListFeatures = [
+  "Real-time Price",
+  "Custom settings",
+  "Redirect to Binance",
+  "Authorization",
+];
+
+export const botLabFeature = [
+  "Seasoning Price",
+  "Custom settings",
+  "Subscription",
+  "Charts",
+];
