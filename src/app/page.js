@@ -41,15 +41,25 @@ export default function Home() {
   // Fetch price when selectedSymbol changes
   useEffect(() => {
     const fetchPrice = async () => {
-      const res = await fetch(`/api/price?symbol=${selectedSymbol}`);
-      const data = await res.json();
-      setPrice(data.price);
+      try {
+        const res = await fetch(`/api/price?symbol=${selectedSymbol}`);
+        if (!res.ok) throw new Error('Failed to fetch price');
+        const data = await res.json();
+        setPrice(data.price);
+      } catch (error) {
+        console.error('Error fetching price:', error);
+      }
     };
     
     const fetchHistory = async () => {
-      const res = await fetch(`/api/history?symbol=${selectedSymbol}&interval=${interval}`);
-      const data = await res.json();
-      setHistory(data);
+      try {
+        const res = await fetch(`/api/history?symbol=${selectedSymbol}&interval=${interval}`);
+        if (!res.ok) throw new Error('Failed to fetch history');
+        const data = await res.json();
+        setHistory(data);
+      } catch (error) {
+        console.error('Error fetching price:', error);
+      }
     };
     
     
@@ -111,7 +121,7 @@ export default function Home() {
               <LineChart data={history}>
                 <XAxis dataKey="time" tickFormatter={(time) => new Date(time).toLocaleTimeString()}
                        tick={{ fontSize: 10 }}/>
-                <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10 }} minTickGap={20} />
+                <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10 }} minTickGap={20}/>
                 <Tooltip
                   labelFormatter={(value) =>
                     new Date(value).toLocaleString('en-US', {
