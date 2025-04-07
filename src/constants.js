@@ -42,11 +42,12 @@ export const botListFeatures = [
   "Custom settings",
   "Redirect to Binance",
   "Authorization",
+  "Price chart",
 ];
 
 export const botLabFeature = [
   "Seasoning Price",
   "Custom settings",
   "Subscription",
-  "Charts",
+  "More charts",
 ];
