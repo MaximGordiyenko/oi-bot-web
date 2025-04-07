@@ -8,9 +8,16 @@ export async function GET(request) {
     
     console.log('Params:', { symbol, interval, limit });
     
-    const res = await fetch(
-      `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`
-    );
+    // Binance API endpoint for historical price data
+    const endpoint = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}`;
+    
+    // Set up request options
+    const res = await fetch(endpoint, {
+      method: 'GET',
+      headers: {
+        'X-MBX-APIKEY': process.env.BINANCE_API_KEY, // Use your API key
+      },
+    });
     
     if (!res.ok) {
       console.error(`Failed to fetch from Binance: ${res.statusText}`);
@@ -29,7 +36,7 @@ export async function GET(request) {
       price: parseFloat(d[4]) // Close price
     }));
     
-    return Response.json(formatted);
+    return new Response(JSON.stringify(formatted), { status: 200 });
     
   } catch (error) {
     console.error('Error in price-history API route:', error);

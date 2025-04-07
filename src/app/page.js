@@ -35,7 +35,7 @@ export default function Home() {
       setSymbols(usdtPairs);
     };
     
-    fetchSymbols();
+    fetchSymbols().then(r => r);
   }, []);
   
   // Fetch price when selectedSymbol changes
@@ -64,10 +64,9 @@ export default function Home() {
     
     
     if (selectedSymbol) {
-      fetchPrice();
-      fetchHistory();
+      fetchPrice().then(r => r);
+      fetchHistory().then(r => r);
     }
-    ;
   }, [selectedSymbol, interval]);
   
   useEffect(() => {
