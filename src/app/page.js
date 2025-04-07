@@ -21,19 +21,27 @@ export default function Home() {
   const [interval, setInterval] = useState('1h');
   
   const intervals = ['1m', '1h', '1d'];
+  const limit = '50';
   
   // Fetch symbols once on mount
   useEffect(() => {
     const fetchSymbols = async () => {
-      const res = await fetch('/api/symbols');
-      const data = await res.json();
-      
-      const usdtPairs = data.symbols.filter((symbol) =>
-        symbol.endsWith('USDT')
-      );
-      
-      setSymbols(usdtPairs);
-    };
+      try {
+        const res = await fetch('https://api.binance.com/api/v3/exchangeInfo');
+        const data = await res.json();
+        const symbols = data.symbols
+          .filter((symbol) => symbol.status === 'TRADING') // Filter out non-trading pairs
+          .map((symbol) => symbol.symbol); // Extract the symbol name (e.g., BTCUSDT)
+        
+        const usdtPairs = symbols.filter((symbol) =>
+          symbol.endsWith('USDT')
+        );
+        
+        setSymbols(usdtPairs);
+      } catch (error) {
+        throw new Error('Failed to fetch price');
+      }
+    }
     
     fetchSymbols().then(r => r);
   }, []);
@@ -42,8 +50,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await fetch(`/api/price?symbol=${selectedSymbol}`);
-        if (!res.ok) throw new Error('Failed to fetch price');
+        const res = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${selectedSymbol}`);
         const data = await res.json();
         setPrice(data.price);
       } catch (error) {
@@ -53,21 +60,17 @@ export default function Home() {
     
     const fetchHistory = async () => {
       try {
-        const res = await fetch(`/api/history?symbol=${selectedSymbol}&interval=${interval}`);
-        if (!res.ok) throw new Error('Failed to fetch history');
+        const res = await fetch(`https://api.binance.com/api/v3/klines?symbol=${selectedSymbol}&interval=${interval}&limit=${limit}`);
         const data = await res.json();
-        setHistory(data);
+        const formatted = data.map((d) => ({
+          time: new Date(d[0]).toLocaleString(),
+          price: parseFloat(d[4]) // Close price
+        }));
+        setHistory(formatted);
       } catch (error) {
         console.error('Error fetching price:', error);
       }
     };
-    
-    fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=5")
-      .then(res => res.json())
-      .then(console.log)
-      .catch(console.error);
-    
-    
     
     if (selectedSymbol) {
       fetchPrice().then(r => r);
