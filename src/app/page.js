@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Script from 'next/script';
-import { WechatWorkOutlined, DragOutlined } from '@ant-design/icons';
+import { WechatWorkOutlined } from '@ant-design/icons';
 import { FloatButton, Select, Flex, Typography } from 'antd';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { particlesConfig, botListFeatures, botLabFeature } from '@/constants';
