@@ -62,6 +62,12 @@ export default function Home() {
       }
     };
     
+    fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=5")
+      .then(res => res.json())
+      .then(console.log)
+      .catch(console.error);
+    
+    
     
     if (selectedSymbol) {
       fetchPrice().then(r => r);
