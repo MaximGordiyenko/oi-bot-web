@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    BINANCE_API_KEY: process.env.BINANCE_API_KEY,
-    BINANCE_API_SECRET: process.env.BINANCE_API_SECRET,
+    DATABASE_URL: process.env.DATABASE_URL,
   },
 };
 
-module.exports = nextConfig
+export default nextConfig;

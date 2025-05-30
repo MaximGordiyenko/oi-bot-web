@@ -38,11 +38,10 @@ export const particlesConfig = {
 
 
 export const botListFeatures = [
-  "Real-time Price",
-  "Custom settings",
-  "Redirect to Binance",
-  "Authorization",
-  "Price chart",
+  "Coin Price Select",
+  "Limits Select",
+  "Chart Limits Select",
+  "Download CSV",
 ];
 
 export const botLabFeature = [
@@ -51,3 +50,9 @@ export const botLabFeature = [
   "Subscription",
   "More charts",
 ];
+
+export const tooltips = {
+  help: "- With interval = '1d' (daily) and limit = 100: You'll see the last 100 days of price data\n" +
+    "- With interval = '1h' (hourly) and limit = 100: You'll see the last 100 hours of price data\n" +
+    "- With interval = '15m' (15 minutes) and limit = 100: You'll see the last 100 15-minute periods\n",
+}

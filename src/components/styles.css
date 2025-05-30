@@ -12,9 +12,6 @@
   box-shadow: 0 4px 6px rgba(115, 194, 175, 0.74);
   
   .draggable-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     color: #aabebd;
   }
 }
@@ -25,4 +22,25 @@
 
 .draggable-item:hover {
   box-shadow: 0 4px 6px rgba(25, 218, 172, 0.84);
+}
+
+.icons-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.draggable-icon, .export-icon {
+  cursor: pointer;
+  
+  &:hover {
+    color: #08edc3;
+  }
+}
+
+.export-icon {
+  font-size: 16px;
 }

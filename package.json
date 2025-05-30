@@ -1,6 +1,7 @@
 {
   "name": "oi-bot-web",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,17 +11,27 @@
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
+    "@types/dotenv": "^8.2.3",
     "antd": "^5.24.6",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
     "next": "15.2.4",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-draggable": "^4.4.6",
-    "recharts": "^2.15.2"
+    "react-icons": "^5.5.0",
+    "recharts": "^2.15.2",
+    "sequelize": "^6.37.7",
+    "tailwind-scrollbar": "^4.0.2",
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "22.14.0",
     "@types/react": "19.1.0",
+    "@types/ws": "^8.18.1",
     "tailwindcss": "^4",
     "typescript": "5.8.3"
   }

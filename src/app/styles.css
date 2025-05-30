@@ -23,8 +23,8 @@
 
 /* The entire scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;              /* for vertical scrollbar */
-  height: 8px;              /* for horizontal scrollbar */
+  width: 10px; /* for vertical scrollbar */
+  height: 8px; /* for horizontal scrollbar */
 }
 
 /* The track (background) */
@@ -92,7 +92,7 @@
   
   .ant-select-item {
     color: rgba(231, 210, 210, 0.88);
-    background-color: #232121!important;
+    background-color: #232121 !important;
     
     &:hover {
       color: #47756a;
@@ -128,4 +128,16 @@
 
 .ant-typography {
   color: #49776c;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #718096;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
